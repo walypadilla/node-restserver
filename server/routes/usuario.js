@@ -66,14 +66,14 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function (req, res) {
             });
         }
 
-        res.json({
+        res.status(201).json({
             ok: true,
             usuario: usuarioDB
         });
 
-    })
+    });
 
-});
+}); // end post
 
 app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res) {
 
@@ -94,11 +94,10 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res)
             usuario: usuarioDB
         });
 
-    })
+    });
 
     
-});
-//fin put
+}); // end put
 
 app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, res) {
     
@@ -117,7 +116,7 @@ app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, r
                 ok: false,
                 err
             });
-        };
+        }
 
         if ( !usuarioBorrado ) {
             return res.status(400).json({
@@ -126,7 +125,7 @@ app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function (req, r
                     message: 'Usuario no encontrado'
                 }
             });
-        };
+        }
 
         res.json({
             ok: true,
